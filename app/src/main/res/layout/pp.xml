@@ -1,0 +1,120 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <!-- Profil Resmi -->
+    <ImageView
+
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:id="@+id/image_profile"
+        android:src="@drawable/mers"
+        android:scaleType="centerCrop"
+        android:layout_gravity="center"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/mers"/>
+
+    <!-- Kullanıcı Adı -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/text_username"
+        android:text="kullanici_adi"
+        android:textSize="18sp"
+        android:textColor="@android:color/black"
+        android:gravity="center"
+        android:layout_marginBottom="8dp"/>
+
+    <!-- Takipçi ve Takip Edilen Sayıları -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Takipçiler"
+            android:textSize="16sp"
+            android:textColor="@android:color/darker_gray"
+            android:layout_marginEnd="16dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/text_followers"
+            android:text="100K"
+            android:textSize="16sp"
+            android:textColor="@android:color/black"
+            android:layout_marginEnd="32dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Takip Edilenler"
+            android:textSize="16sp"
+            android:textColor="@android:color/darker_gray"
+            android:layout_marginEnd="16dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/text_following"
+            android:text="200"
+            android:textSize="16sp"
+            android:textColor="@android:color/black"/>
+
+    </LinearLayout>
+
+    <!-- Kullanıcı Bilgileri -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/text_user_info"
+        android:text="Bilgi hakkında kısa bir açıklama..."
+        android:textSize="14sp"
+        android:textColor="@android:color/darker_gray"
+        android:gravity="center"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="24dp"/>
+
+    <!-- Profil Düzenle veya Takip Et Butonu -->
+    <Button
+        android:id="@+id/button_edit_profile"
+        android:layout_width="match_parent"
+        android:layout_height="52dp"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/mers"
+        android:text="Profili Düzenle"
+        android:textColor="@android:color/white" />
+
+    <!-- İki tane yan yana image -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center">
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="100dp"
+            android:layout_marginEnd="8dp"
+            android:layout_weight="1"
+            android:scaleType="centerCrop"
+            android:src="@drawable/mers" />
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="100dp"
+            android:layout_weight="1"
+            android:src="@drawable/mers"
+            android:scaleType="centerCrop"
+            android:layout_marginStart="8dp"/>
+
+    </LinearLayout>
+
+</LinearLayout>
