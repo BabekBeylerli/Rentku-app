@@ -44,7 +44,7 @@ public class HomeFragment extends BaseFragment {
 
     private void loadRentalCars() {
         List<RentalCar> rentalCarList = db.rentalCarDao().getAllRentalCars();
-        adapter = new RentalCarAdapter(rentalCarList);
+        adapter = new RentalCarAdapter(getContext(), rentalCarList);
         recyclerView.setAdapter(adapter);
     }
 }

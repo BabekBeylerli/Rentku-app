@@ -12,7 +12,5 @@ public class RentalCar {
     public String year;
     public String km;
     public String price;
-    public String photoPath; // New field for photo path
-
-    // Getters and setters or public fields can be used
+    public String photoPath;
 }

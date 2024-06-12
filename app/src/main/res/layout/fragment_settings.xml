@@ -34,29 +34,26 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent">
 
+                    <ImageView
+                        android:id="@+id/imageView7"
+                        android:layout_width="139dp"
+                        android:layout_height="131dp"
+                        android:src="@drawable/baseline_person_24"
+                        tools:layout_editor_absoluteX="136dp"
+                        tools:layout_editor_absoluteY="77dp"
+                        tools:ignore="MissingConstraints" />
+
+                    <TextView
+                        android:id="@+id/textView3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="User Settings"
+                        android:textColor="@color/white"
+                        android:textSize="20dp"
+                        tools:layout_editor_absoluteX="146dp"
+                        tools:layout_editor_absoluteY="6dp"
+                        tools:ignore="MissingConstraints" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
-
-                <ImageView
-                    android:id="@+id/imageView7"
-                    android:layout_width="139dp"
-                    android:layout_height="131dp"
-                    android:layout_marginTop="92dp"
-                    android:src="@drawable/baseline_person_24"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <TextView
-                    android:id="@+id/textView3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:text="User Settings"
-                    android:textColor="@color/white"
-                    android:textSize="20dp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/imageView7" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 

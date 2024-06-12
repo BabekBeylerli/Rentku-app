@@ -1,5 +1,7 @@
 package com.example.rentalcarmobile.adapter;
 
+import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,14 +14,17 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.rentalcarmobile.R;
 import com.example.rentalcarmobile.dao.entity.RentalCar;
+import com.example.rentalcarmobile.screens.RentalSeperateActivity;
 
 import java.util.List;
 
 public class RentalCarAdapter extends RecyclerView.Adapter<RentalCarAdapter.ViewHolder> {
 
     private List<RentalCar> rentalCarList;
+    private Context context;
 
-    public RentalCarAdapter(List<RentalCar> rentalCarList) {
+    public RentalCarAdapter(Context context, List<RentalCar> rentalCarList) {
+        this.context = context;
         this.rentalCarList = rentalCarList;
     }
 
@@ -43,6 +48,12 @@ public class RentalCarAdapter extends RecyclerView.Adapter<RentalCarAdapter.View
             Uri photoUri = Uri.parse(rentalCar.photoPath);
             holder.rentalPhoto.setImageURI(photoUri);
         }
+
+        holder.itemView.setOnClickListener(v -> {
+            Intent intent = new Intent(context, RentalSeperateActivity.class);
+            intent.putExtra("CarId", rentalCar.id);
+            context.startActivity(intent);
+        });
     }
 
     @Override

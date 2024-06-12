@@ -33,7 +33,12 @@
         <activity
             android:name=".screens.LoginActivity"
             android:exported="false" />
-
+        <activity
+            android:name=".screens.ProfileActivity"
+            android:exported="false" />
+        <activity
+            android:name=".screens.CommentActivity"
+            android:exported="false" />
         <activity
             android:name=".screens.SplashActivity"
             android:exported="true">

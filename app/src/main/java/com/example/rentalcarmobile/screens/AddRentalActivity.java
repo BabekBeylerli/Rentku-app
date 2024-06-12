@@ -1,7 +1,7 @@
 package com.example.rentalcarmobile.screens;
 
 import android.Manifest;
-import android.content.DialogInterface;
+
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
@@ -15,7 +15,6 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
@@ -145,15 +144,12 @@ public class AddRentalActivity extends AppCompatActivity {
 
     private String saveImageToFile(Uri imageUri) {
         try {
-            // Dosya yolunu oluşturun
             File imageFile = new File(getFilesDir(), "rental_car_image_" + System.currentTimeMillis() + ".jpg");
             OutputStream outputStream = new FileOutputStream(imageFile);
 
-            // Girdi akışını açın
             InputStream inputStream = getContentResolver().openInputStream(imageUri);
 
-            // Dosyayı kopyalayın
-            byte[] buffer = new byte[1024]; // 1KB'lık bir buffer oluşturun
+            byte[] buffer = new byte[1024];
             int bytesRead;
             while ((bytesRead = inputStream.read(buffer)) != -1) {
                 outputStream.write(buffer, 0, bytesRead);

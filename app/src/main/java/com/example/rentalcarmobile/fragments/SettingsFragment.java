@@ -9,6 +9,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -17,6 +19,7 @@ import androidx.annotation.Nullable;
 import com.example.rentalcarmobile.R;
 import com.example.rentalcarmobile.database.DatabaseHelper;
 import com.example.rentalcarmobile.screens.LoginActivity;
+import com.example.rentalcarmobile.screens.ProfileActivity;
 
 public class SettingsFragment extends BaseFragment {
 
@@ -28,7 +31,6 @@ public class SettingsFragment extends BaseFragment {
         View view = inflater.inflate(R.layout.fragment_settings, container, false);
 
         databaseHelper = new DatabaseHelper(getContext());
-
         Button logoutButton = view.findViewById(R.id.LogOut);
         logoutButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -44,7 +46,18 @@ public class SettingsFragment extends BaseFragment {
                 showDeleteConfirmationDialog();
             }
         });
+
+        ImageView imageView7 = view.findViewById(R.id.imageView7);
+
+        imageView7.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), ProfileActivity.class);
+                startActivity(intent);
+            }
+        });
         return view;
+
     }
 
     private void logout() {

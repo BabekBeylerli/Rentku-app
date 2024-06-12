@@ -15,5 +15,8 @@ public interface RentalCarDao {
 
     @Query("SELECT * FROM rental_cars")
     List<RentalCar> getAllRentalCars();
+
+    @Query("SELECT * FROM rental_cars WHERE id = :id")
+    RentalCar getRentalCarById(int id);
 }
 

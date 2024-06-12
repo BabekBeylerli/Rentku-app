@@ -1,48 +1,58 @@
 package com.example.rentalcarmobile.screens;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.room.Room;
 
+import android.net.Uri;
 import android.os.Bundle;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.rentalcarmobile.R;
-import com.example.rentalcarmobile.errorhandling.ErrorHandler;
+import com.example.rentalcarmobile.dao.database.RentalCarDatabase;
+import com.example.rentalcarmobile.dao.entity.RentalCar;
 
 public class RentalSeperateActivity extends AppCompatActivity {
 
-    private ErrorHandler errorHandler;
+    private RentalCarDatabase db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_rental_seperate);
 
-        errorHandler = ErrorHandler.getInstance();
+        db = Room.databaseBuilder(getApplicationContext(), RentalCarDatabase.class, "rental-car-database")
+                .allowMainThreadQueries()
+                .build();
 
-        try {
-            String car_name = getIntent().getStringExtra("CarName");
-            String car_model = getIntent().getStringExtra("CarModel");
-            String car_year = getIntent().getStringExtra("CarYear");
-            String car_km = getIntent().getStringExtra("CarKm");
-            int car_price = getIntent().getIntExtra("CarPrice", 0);
-            String email = getIntent().getStringExtra("Email");
-
-
-            TextView carNameTextView = findViewById(R.id.carName);
-            TextView carModelTextView = findViewById(R.id.carModel);
-            TextView carYearTextView = findViewById(R.id.carYear);
-            TextView carKmTextView = findViewById(R.id.carKm);
-            TextView carPriceTextView = findViewById(R.id.carPrice);
-            TextView emailTextView = findViewById(R.id.contactAdress);
-
-            carNameTextView.setText(car_name);
-            carModelTextView.setText(car_model);
-            carYearTextView.setText(car_year);
-            carKmTextView.setText(car_km);
-            carPriceTextView.setText(String.valueOf(car_price));
-            emailTextView.setText(email);
-        } catch (Exception e) {
-            errorHandler.handleException(this, e);
+        int carId = getIntent().getIntExtra("CarId", -1);
+        if (carId != -1) {
+            RentalCar rentalCar = db.rentalCarDao().getRentalCarById(carId);
+            if (rentalCar != null) {
+                setCarDetails(rentalCar);
+            }
         }
+    }
+
+    private void setCarDetails(RentalCar rentalCar) {
+        ImageView rentalPhoto = findViewById(R.id.imageView);
+        TextView carNameTextView = findViewById(R.id.carName);
+        //  TextView carModelTextView = findViewById(R.id.carModel);
+        TextView carYearTextView = findViewById(R.id.carYear);
+        TextView carKmTextView = findViewById(R.id.carKm);
+        TextView carPriceTextView = findViewById(R.id.carPrice);
+        TextView emailTextView = findViewById(R.id.contactAdress);
+
+        if (rentalCar.photoPath != null) {
+            Uri photoUri = Uri.parse(rentalCar.photoPath);
+            rentalPhoto.setImageURI(photoUri);
+        }
+
+        carNameTextView.setText(rentalCar.name);
+      //  carModelTextView.setText(rentalCar.model);
+        carYearTextView.setText(rentalCar.year);
+        carKmTextView.setText(rentalCar.km);
+        carPriceTextView.setText(rentalCar.price);
+        emailTextView.setText("contact@example.com"); // You can get the email from rentalCar if available
     }
 }
